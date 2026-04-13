@@ -21,3 +21,91 @@ library(knitr)
 ```{r}
 data <- read_csv("data/36879932_Abhigna Tippala.csv")
 ```
+
+```{r}
+cleaned_data <- data |>
+    mutate(purchase_amount = replace_na(purchase_amount , 0))
+```
+
+**INTRODUCTION:** 
+This dataset captures how customers behave through marketing spends, visits, and purchase outcomes across various segments, highlighting the value of customer insights for strategic decisions. This research aims to determine whether investing in marketing actually increases overall revenue and customer engagement. By analyzing customer segments such as Consumer, SMB, and Enterprise, we can identify which segment performs best and delivers the highest ROI. This will help make marketing strategies more effective.
+
+**RESEARCH:**
+In this research, we will examine whether high marketing spending leads to increased purchase amounts and stronger customer engagement. We will then examine how this relationship will vary across the customer segments, including Consumer, SMB, and Enterprise. The aim is to understand which customer segment delivers the highest ROI.
+
+**DATA INTRODUCTION:**
+The dataset contains information about customers, including customer ID, sign-up date, marketing spend, visits, purchase amount, segment, and notes. This data helps us understand consumer behavior and how marketing investments impact revenue and engagement. The data was cleaned by removing missing values from the purchase amount field. The dataset has been checked for inconsistencies to ensure that the data is clean and reliable.
+
+**DATASET DESCRIPTION:** 
+This dataset contains ‘r nrow(cleaned_data)’ observations and ‘r ncol(cleaned_data)’ variables, making it a midsize customer-level dataset for behavior analysis. By using ‘str(cleaned_data)’, we can see the dataset’s 7 variables, which include: marketing_spend, visits, purchase_amount, customer_id, signup_date, segment, and notes. The first 3 are numeric variables, and the last 4 are character variables. Overall, the dataset is a tibble with 150 rows and 7 columns, capturing key information on customer identity, marketing activity, and purchasing behavior.
+
+```{r}
+str(cleaned_data)
+nrow(cleaned_data)
+ncol(cleaned_data)
+```
+
+
+**SUMMARY TABLE:**
+```{r}
+summary_table <- data.frame(
+  Variable = c("Marketing Spend", "Visits", "Purchase Amount"),
+  Mean = c(
+    mean(cleaned_data$marketing_spend, na.rm = TRUE),
+    mean(cleaned_data$visits, na.rm = TRUE),
+    mean(cleaned_data$purchase_amount, na.rm = TRUE)
+  ),
+  Median = c(
+    median(cleaned_data$marketing_spend, na.rm = TRUE),
+    median(cleaned_data$visits, na.rm = TRUE),
+    median(cleaned_data$purchase_amount, na.rm = TRUE)
+  )
+)
+
+summary_table
+knitr::kable(summary_table)
+
+```
+
+
+Table 1 shows the average (mean) and middle (median) values for key numeric variables in the dataset, providing an overview of customer spending, engagement, and purchasing behaviour.
+
+```{r}
+library(ggplot2)
+
+ggplot(cleaned_data, aes(x = segment)) +
+  geom_bar() +
+  labs(
+    title = "Customer Segment Distribution",
+    x = "Customer Segment",
+    y = "Number of Customers"
+  )
+
+```
+
+Figure 1 shows the distribution of customers across different segments.
+
+
+```{r}
+library(ggplot2)
+
+ggplot(cleaned_data, aes(x = marketing_spend, y = purchase_amount)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Relationship Between Marketing Spend and Purchase Amount",
+    x = "Marketing Spend",
+    y = "Purchase Amount"
+  )
+```
+
+Figure 2 shows the relationship between marketing spend and purchase amount, including a trend line to highlight the overall pattern.
+
+**RESULT:**
+ From Table 1, the average marketing spend is 149.81  and the average purchase amount is 137.91, which supports the idea that spending more on marketing does not guarantee higher purchases.
+
+ Figure 1 shows that most customers belong to the Consumer segment, indicating that this group has the greatest influence on overall customer behavior in the dataset. 
+
+ Figure 2 shows a weak positive relationship between marketing spend and purchase amount, suggesting that higher marketing spend does not always lead to higher sales.
+
+ 

@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Abhigna Tippala">
 
-<title>Untitled</title>
+<title>Customer Marketing Spend and Purchase Dataset</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -41,21 +42,28 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="report.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Untitled</h1>
+<h1 class="title">Customer Marketing Spend and Purchase Dataset</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Abhigna Tippala </p>
+          </div>
+  </div>
     
   
     
@@ -66,7 +74,89 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-
+<p><strong>INTRODUCTION:</strong> This dataset captures how customers behave through marketing spends, visits, and purchase outcomes across various segments, highlighting the value of customer insights for strategic decisions. This research aims to determine whether investing in marketing actually increases overall revenue and customer engagement. By analyzing customer segments such as Consumer, SMB, and Enterprise, we can identify which segment performs best and delivers the highest ROI. This will help make marketing strategies more effective.</p>
+<p><strong>RESEARCH:</strong> In this research, we will examine whether high marketing spending leads to increased purchase amounts and stronger customer engagement. We will then examine how this relationship will vary across the customer segments, including Consumer, SMB, and Enterprise. The aim is to understand which customer segment delivers the highest ROI.</p>
+<p><strong>DATA INTRODUCTION:</strong> The dataset contains information about customers, including customer ID, sign-up date, marketing spend, visits, purchase amount, segment, and notes. This data helps us understand consumer behavior and how marketing investments impact revenue and engagement. The data was cleaned by removing missing values from the purchase amount field. The dataset has been checked for inconsistencies to ensure that the data is clean and reliable.</p>
+<p><strong>DATASET DESCRIPTION:</strong> This dataset contains ‘r nrow(cleaned_data)’ observations and ‘r ncol(cleaned_data)’ variables, making it a midsize customer-level dataset for behavior analysis. By using ‘str(cleaned_data)’, we can see the dataset’s 7 variables, which include: marketing_spend, visits, purchase_amount, customer_id, signup_date, segment, and notes. The first 3 are numeric variables, and the last 4 are character variables. Overall, the dataset is a tibble with 150 rows and 7 columns, capturing key information on customer identity, marketing activity, and purchasing behavior.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [150 × 7] (S3: tbl_df/tbl/data.frame)
+ $ customer_id    : chr [1:150] "36879932_c0001" "36879932_c0002" "36879932_c0003" "36879932_c0004" ...
+ $ signup_date    : chr [1:150] "2025-03-25" "2025-11-01" "2025-03-18" "2024-11-05" ...
+ $ marketing_spend: num [1:150] 237.9 94.2 265.1 174.9 10.3 ...
+ $ visits         : num [1:150] 8 6 11 5 3 5 6 3 2 5 ...
+ $ purchase_amount: num [1:150] 0 142.2 265 262.6 21.8 ...
+ $ segment        : chr [1:150] "Consumer" "SMB" "Consumer" "Enterprise" ...
+ $ notes          : chr [1:150] "returned" NA NA "N/A" ...</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 150</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+</div>
+<p><strong>SUMMARY TABLE:</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>         Variable     Mean Median
+1 Marketing Spend 149.8117 143.15
+2          Visits   5.5200   5.00
+3 Purchase Amount 137.9070 143.65</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Marketing Spend</td>
+<td style="text-align: right;">149.8117</td>
+<td style="text-align: right;">143.15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Visits</td>
+<td style="text-align: right;">5.5200</td>
+<td style="text-align: right;">5.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Purchase Amount</td>
+<td style="text-align: right;">137.9070</td>
+<td style="text-align: right;">143.65</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Table 1 shows the average (mean) and middle (median) values for key numeric variables in the dataset, providing an overview of customer spending, engagement, and purchasing behaviour.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Figure 1 shows the distribution of customers across different segments.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Figure 2 shows the relationship between marketing spend and purchase amount, including a trend line to highlight the overall pattern.</p>
+<p><strong>RESULT:</strong> From Table 1, the average marketing spend is 149.81 and the average purchase amount is 137.91, which supports the idea that spending more on marketing does not guarantee higher purchases.</p>
+<p>Figure 1 shows that most customers belong to the Consumer segment, indicating that this group has the greatest influence on overall customer behavior in the dataset.</p>
+<p>Figure 2 shows a weak positive relationship between marketing spend and purchase amount, suggesting that higher marketing spend does not always lead to higher sales.</p>
 
 </main>
 <!-- /main column -->

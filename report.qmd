@@ -1,5 +1,23 @@
 ---
-title: "Untitled"
-format: html
+title: "Customer Marketing Spend and Purchase Dataset"
+author: "Abhigna Tippala"
+format:
+  html: default
+  pdf: default
+execute: 
+  echo: false
+  warning: false
+  message: false
+editor: visual
 ---
 
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(readr)
+library(knitr)
+```
+
+```{r}
+data <- read_csv("data/36879932_Abhigna Tippala.csv")
+```
